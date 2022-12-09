@@ -1,0 +1,13 @@
+# https://pub.dev/packages/pedantic_mono
+include: package:pedantic_mono/analysis_options.yaml
+# Explicitly disable only the rules we do not want.
+linter:
+  rules:
+    # Some explanation why we don't want this lint
+    avoid_classes_with_only_static_members: false
+
+# Ignore lint warnings on freezed generated files
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"

@@ -19,7 +19,6 @@ mixin _$DataTableState {
   /// id
   bool get sortAscending => throw _privateConstructorUsedError;
   int? get sortColumnIndex => throw _privateConstructorUsedError;
-  int? get selectedIndex => throw _privateConstructorUsedError;
 
   /// 記事本体
   /// DataTable Classでは必要そう。
@@ -37,10 +36,7 @@ abstract class $DataTableStateCopyWith<$Res> {
       _$DataTableStateCopyWithImpl<$Res, DataTableState>;
   @useResult
   $Res call(
-      {bool sortAscending,
-      int? sortColumnIndex,
-      int? selectedIndex,
-      List<Article> articleList});
+      {bool sortAscending, int? sortColumnIndex, List<Article> articleList});
 }
 
 /// @nodoc
@@ -58,7 +54,6 @@ class _$DataTableStateCopyWithImpl<$Res, $Val extends DataTableState>
   $Res call({
     Object? sortAscending = null,
     Object? sortColumnIndex = freezed,
-    Object? selectedIndex = freezed,
     Object? articleList = null,
   }) {
     return _then(_value.copyWith(
@@ -69,10 +64,6 @@ class _$DataTableStateCopyWithImpl<$Res, $Val extends DataTableState>
       sortColumnIndex: freezed == sortColumnIndex
           ? _value.sortColumnIndex
           : sortColumnIndex // ignore: cast_nullable_to_non_nullable
-              as int?,
-      selectedIndex: freezed == selectedIndex
-          ? _value.selectedIndex
-          : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int?,
       articleList: null == articleList
           ? _value.articleList
@@ -91,10 +82,7 @@ abstract class _$$_DataTableStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool sortAscending,
-      int? sortColumnIndex,
-      int? selectedIndex,
-      List<Article> articleList});
+      {bool sortAscending, int? sortColumnIndex, List<Article> articleList});
 }
 
 /// @nodoc
@@ -110,7 +98,6 @@ class __$$_DataTableStateCopyWithImpl<$Res>
   $Res call({
     Object? sortAscending = null,
     Object? sortColumnIndex = freezed,
-    Object? selectedIndex = freezed,
     Object? articleList = null,
   }) {
     return _then(_$_DataTableState(
@@ -121,10 +108,6 @@ class __$$_DataTableStateCopyWithImpl<$Res>
       sortColumnIndex: freezed == sortColumnIndex
           ? _value.sortColumnIndex
           : sortColumnIndex // ignore: cast_nullable_to_non_nullable
-              as int?,
-      selectedIndex: freezed == selectedIndex
-          ? _value.selectedIndex
-          : selectedIndex // ignore: cast_nullable_to_non_nullable
               as int?,
       articleList: null == articleList
           ? _value._articleList
@@ -140,7 +123,6 @@ class _$_DataTableState implements _DataTableState {
   const _$_DataTableState(
       {this.sortAscending = false,
       this.sortColumnIndex,
-      this.selectedIndex,
       final List<Article> articleList = const <Article>[]})
       : _articleList = articleList;
 
@@ -150,8 +132,6 @@ class _$_DataTableState implements _DataTableState {
   final bool sortAscending;
   @override
   final int? sortColumnIndex;
-  @override
-  final int? selectedIndex;
 
   /// 記事本体
   /// DataTable Classでは必要そう。
@@ -169,7 +149,7 @@ class _$_DataTableState implements _DataTableState {
 
   @override
   String toString() {
-    return 'DataTableState(sortAscending: $sortAscending, sortColumnIndex: $sortColumnIndex, selectedIndex: $selectedIndex, articleList: $articleList)';
+    return 'DataTableState(sortAscending: $sortAscending, sortColumnIndex: $sortColumnIndex, articleList: $articleList)';
   }
 
   @override
@@ -181,15 +161,13 @@ class _$_DataTableState implements _DataTableState {
                 other.sortAscending == sortAscending) &&
             (identical(other.sortColumnIndex, sortColumnIndex) ||
                 other.sortColumnIndex == sortColumnIndex) &&
-            (identical(other.selectedIndex, selectedIndex) ||
-                other.selectedIndex == selectedIndex) &&
             const DeepCollectionEquality()
                 .equals(other._articleList, _articleList));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, sortAscending, sortColumnIndex,
-      selectedIndex, const DeepCollectionEquality().hash(_articleList));
+      const DeepCollectionEquality().hash(_articleList));
 
   @JsonKey(ignore: true)
   @override
@@ -202,7 +180,6 @@ abstract class _DataTableState implements DataTableState {
   const factory _DataTableState(
       {final bool sortAscending,
       final int? sortColumnIndex,
-      final int? selectedIndex,
       final List<Article> articleList}) = _$_DataTableState;
 
   @override
@@ -211,8 +188,6 @@ abstract class _DataTableState implements DataTableState {
   bool get sortAscending;
   @override
   int? get sortColumnIndex;
-  @override
-  int? get selectedIndex;
   @override
 
   /// 記事本体

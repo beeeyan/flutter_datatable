@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datatable/controller/article_controller.dart';
+import 'package:flutter_datatable/controller/web_datatable_controller.dart';
+import 'package:flutter_datatable/domain/model/article/article.dart';
 import 'package:flutter_datatable/utile/datatime_convert.dart';
 import 'package:flutter_datatable/widget/drawer_menu.dart';
 import 'package:flutter_web_data_table/web_data_table.dart';
@@ -27,6 +29,9 @@ class WebDataTableSample extends ConsumerWidget {
           child: Text(err.toString()),
         ),
         data: (articleList) {
+          final webDataTableState = ref.watch(webDataTableStateProvider);
+          final webDataTableNotifier =
+              ref.watch(webDataTableStateProvider.notifier);
           return Padding(
             padding: const EdgeInsets.only(
               top: 20,
@@ -36,6 +41,8 @@ class WebDataTableSample extends ConsumerWidget {
             child: WebDataTable(
               header: Container(),
               source: WebDataTableSource(
+                sortColumnName: webDataTableState.sortColumnName,
+                sortAscending: webDataTableState.sortAscending,
                 // 一律で表示方法などを制御できる。
                 columns: <WebDataColumn>[
                   WebDataColumn(
@@ -87,6 +94,23 @@ class WebDataTableSample extends ConsumerWidget {
                 ],
                 // Map<String, dynamic>型で指定する必要がある。
                 rows: articleList.map((article) => article.toJson()).toList(),
+                // 個人的にはここは直感的で実装はしやすかった。
+                onTapRow: (rows, index) {
+                  final article = Article.fromJson(rows[index]);
+                  showDialog<void>(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text('選択した行のデータ'),
+                        content: Text(article.toString()),
+                      );
+                    },
+                  );
+                },
+              ),
+              onSort: (columnName, ascending) => webDataTableNotifier.onSort(
+                columnName: columnName,
+                ascending: ascending,
               ),
             ),
           );

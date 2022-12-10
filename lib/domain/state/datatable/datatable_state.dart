@@ -11,8 +11,6 @@ class DataTableState with _$DataTableState {
 
     int? sortColumnIndex,
 
-    int? selectedIndex,
-
     /// 記事本体
     /// DataTable Classでは必要そう。
     @Default(<Article>[]) List<Article> articleList,

@@ -1,5 +1,5 @@
 import 'package:flutter_datatable/domain/model/article/article.dart';
-import 'package:flutter_datatable/domain/state/article/datatable_state.dart';
+import 'package:flutter_datatable/domain/state/datatable/datatable_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final dataTableStateProvider = StateNotifierProvider.autoDispose

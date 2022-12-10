@@ -2,15 +2,16 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datatable/controller/article_controller.dart';
 import 'package:flutter_datatable/controller/datatable_controller.dart';
+import 'package:flutter_datatable/domain/model/article/article.dart';
 import 'package:flutter_datatable/widget/drawer_menu.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-class DataTable2Sample extends ConsumerWidget {
-  const DataTable2Sample({super.key});
+class PaginatedDataTable2Sample extends ConsumerWidget {
+  const PaginatedDataTable2Sample({super.key});
 
-  static const route = '/sample/datatable2';
-  static const title = 'data_table_2';
+  static const route = '/sample/paginateddatatable2';
+  static const title = 'paginated_table_2';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -39,7 +40,7 @@ class DataTable2Sample extends ConsumerWidget {
               left: 20,
               right: 20,
             ),
-            child: DataTable2(
+            child: PaginatedDataTable2(
               // onSelectAllの記述がない場合は、
               // 「onSelectChanged」の処理が全て実行される。
               onSelectAll: (value) {
@@ -77,52 +78,65 @@ class DataTable2Sample extends ConsumerWidget {
                   label: Text('更新日'),
                 ),
               ],
-              // DataTable Classと使い方に違いはない。
-              rows: dataTableState.articleList
-                  .map(
-                    (article) => DataRow(
-                      cells: <DataCell>[
-                        DataCell(
-                          Text(article.id),
-                        ),
-                        DataCell(
-                          Text(article.title),
-                        ),
-                        DataCell(
-                          Text(
-                            DateFormat.yMMMMd()
-                                .add_jms()
-                                .format(article.createdAt),
-                          ),
-                        ),
-                        DataCell(
-                          Text(
-                            DateFormat.yMMMMd()
-                                .add_jms()
-                                .format(article.updatedAt),
-                          ),
-                        ),
-                      ],
-                      // メモ「value」がbool値なのが、人によっては扱いづらいかも。
-                      // chekboxの活性非活性でのみ利用すべきなのかも。
-                      onSelectChanged: (value) {
-                        showDialog<void>(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: const Text('選択した行のデータ'),
-                              content: Text(article.toString()),
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  )
-                  .toList(),
+              // DataTableSource、引数は追加することができる。
+              source: SampleDataSource(dataTableState.articleList),
             ),
           );
         },
       ),
     );
   }
+}
+
+/// テーブルのデータ
+class SampleDataSource extends DataTableSource {
+  SampleDataSource(this.articleList);
+
+  final List<Article> articleList;
+
+  @override
+  DataRow getRow(int index) {
+    /// 1行文のデータ
+    return DataRow(
+      cells: <DataCell>[
+        DataCell(
+          Text(articleList[index].id),
+        ),
+        DataCell(
+          Text(articleList[index].title),
+        ),
+        DataCell(
+          Text(
+            DateFormat.yMMMMd().add_jms().format(articleList[index].createdAt),
+          ),
+        ),
+        DataCell(
+          Text(
+            DateFormat.yMMMMd().add_jms().format(articleList[index].updatedAt),
+          ),
+        ),
+      ],
+      // メモ「value」がbool値なのが、人によっては扱いづらいかも。
+      // chekboxの活性非活性でのみ利用すべきなのかも。
+      onSelectChanged: (value) {
+        debugPrint(articleList[index].toString());
+        // showDialog<void>(
+        //   context: context,
+        //   builder: (context) {
+        //     return AlertDialog(
+        //       title: const Text('選択した行のデータ'),
+        //       content: Text(articleList[index].toString()),
+        //     );
+        //   },
+        // );
+      },
+    );
+  }
+
+  @override
+  int get rowCount => articleList.length; // 全行数
+  @override
+  bool get isRowCountApproximate => false; // 行数は常に正確な値かどうか(不明な場合はfalseにしておく)
+  @override
+  int get selectedRowCount => 0; // 選択された行数(選択を使用しない場合は0で問題ない)
 }

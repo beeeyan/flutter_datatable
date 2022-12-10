@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datatable/sample/datatable_2_sample.dart';
 import 'package:flutter_datatable/sample/datatable_sample.dart';
+import 'package:flutter_datatable/sample/paginated_dataTable_2_sample.dart';
 import 'package:flutter_datatable/sample/web_data_table_sample.dart';
 
 class RouteGenerator {
@@ -24,8 +25,15 @@ class RouteGenerator {
           builder: (_) => const WebDataTableSample(),
           settings: RouteSettings(name: settings.name),
         );
+      case PaginatedDataTable2Sample.route:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => const PaginatedDataTable2Sample(),
+          settings: RouteSettings(name: settings.name),
+        );
       default:
-        return MaterialPageRoute<dynamic>(builder: (_) => const DataTableSample());
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => const DataTableSample(),
+        );
     }
   }
 }

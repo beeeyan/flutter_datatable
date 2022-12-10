@@ -6,8 +6,7 @@ import 'package:flutter_datatable/sample/web_data_table_sample.dart';
 class RouteGenerator {
   static Route<dynamic> generateRote(RouteSettings settings) {
     // 簡易的に作成しているのでget parameterなどは付与されない想定
-    final paths = settings.name!;
-    final path = paths[0];
+    final path = settings.name!;
 
     switch (path) {
       case DataTableSample.route:

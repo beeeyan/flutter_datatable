@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_datatable/sample/datatable_2_sample.dart';
 import 'package:flutter_datatable/sample/datatable_sample.dart';
+import 'package:flutter_datatable/sample/web_data_table_sample.dart';
 
 class DrawerMenu extends StatelessWidget {
   const DrawerMenu({super.key});
@@ -10,7 +12,6 @@ class DrawerMenu extends StatelessWidget {
       child: ListView(
         children: [
           ListTile(
-            dense: true,
             title: const Text(
               'DataTable',
             ),
@@ -18,6 +19,24 @@ class DrawerMenu extends StatelessWidget {
               Icons.chevron_right_outlined,
             ),
             onTap: () => Navigator.pushNamed(context, DataTableSample.route),
+          ),
+          ListTile(
+            title: const Text(
+              'flutter_web_data_table',
+            ),
+            trailing: const Icon(
+              Icons.chevron_right_outlined,
+            ),
+            onTap: () => Navigator.pushNamed(context, WebDataTableSample.route),
+          ),
+          ListTile(
+            title: const Text(
+              'datatable_2_sample',
+            ),
+            trailing: const Icon(
+              Icons.chevron_right_outlined,
+            ),
+            onTap: () => Navigator.pushNamed(context, DataTable2Sample.route),
           ),
         ],
       ),

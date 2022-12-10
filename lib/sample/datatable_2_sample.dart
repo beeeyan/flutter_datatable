@@ -40,13 +40,14 @@ class DataTable2Sample extends ConsumerWidget {
               right: 20,
             ),
             child: DataTable2(
+              sortColumnIndex: dataTableState.sortColumnIndex,
+              sortAscending: dataTableState.sortAscending,
               // DataTable Classと使い方に違いはない。
               columns: [
                 DataColumn(
                   label: const Text('id'),
                   onSort: (columnIndex, ascending) =>
                       dataTableStateNotifier.onDefaultSort(
-                    // ascendingの扱いが違った。
                     ascending: ascending,
                     columnIndex: columnIndex,
                   ),

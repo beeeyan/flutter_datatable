@@ -1,0 +1,22 @@
+{
+    "article": [
+        {
+            "id": "0001",
+            "title" : "DataTable Class",
+            "createdAt": "2022-12-10 04:30:30Z",
+            "updatedAt": "2022-12-10 05:00:00Z"
+        },
+        {
+            "id": "0002",
+            "title" : "web_data_table",
+            "createdAt": "2022-12-10 05:30:30Z",
+            "updatedAt": "2022-12-10 06:00:00Z"
+        },
+        {
+            "id": "0003",
+            "title" : "data_table_2",
+            "createdAt": "2022-12-10 07:30:30Z",
+            "updatedAt": "2022-12-10 08:00:00Z"
+        }
+    ]
+}

@@ -120,6 +120,7 @@ class SampleDataSource extends DataTableSource {
       // chekboxの活性非活性でのみ利用すべきなのかも。
       onSelectChanged: (value) {
         debugPrint(articleList[index].toString());
+        // context使えなかった。
         // showDialog<void>(
         //   context: context,
         //   builder: (context) {

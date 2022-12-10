@@ -2,6 +2,7 @@ import 'package:flutter_datatable/domain/model/article/article.dart';
 import 'package:flutter_datatable/domain/state/datatable/datatable_state.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// DataTable・DataTable2両方で利用できる
 final dataTableStateProvider = StateNotifierProvider.autoDispose
     .family<DataTableStateNotifier, DataTableState, List<Article>>(
   DataTableStateNotifier.new,

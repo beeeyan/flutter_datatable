@@ -13,6 +13,7 @@ class DataTableSample extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // StateNotifierProvider一つにまとめるのがいいかも
     final articleListAsnc = ref.watch(articleListProvider);
     return Scaffold(
       appBar: AppBar(
@@ -26,6 +27,7 @@ class DataTableSample extends ConsumerWidget {
           child: Text(err.toString()),
         ),
         data: (articleList) {
+          // StateNotifierProvider一つにまとめるのがいいかも
           final dataTableState = ref.watch(dataTableStateProvider(articleList));
           final dataTableStateNotifier =
               ref.watch(dataTableStateProvider(articleList).notifier);

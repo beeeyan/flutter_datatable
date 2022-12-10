@@ -23,16 +23,16 @@ mixin _$Article {
   /// id
   String get id => throw _privateConstructorUsedError;
 
-  /// 名前
-  String? get title => throw _privateConstructorUsedError;
+  /// タイトル
+  String get title => throw _privateConstructorUsedError;
 
   /// 作成日
   @DatetimeConverter()
-  DateTime? get createdAt => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
 
   /// 更新日
   @DatetimeConverter()
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  DateTime get updatedAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,9 +46,9 @@ abstract class $ArticleCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String? title,
-      @DatetimeConverter() DateTime? createdAt,
-      @DatetimeConverter() DateTime? updatedAt});
+      String title,
+      @DatetimeConverter() DateTime createdAt,
+      @DatetimeConverter() DateTime updatedAt});
 }
 
 /// @nodoc
@@ -65,27 +65,27 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
   @override
   $Res call({
     Object? id = null,
-    Object? title = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? title = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: freezed == title
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
-      createdAt: freezed == createdAt
+              as String,
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
+              as DateTime,
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ) as $Val);
   }
 }
@@ -99,9 +99,9 @@ abstract class _$$_ArticleCopyWith<$Res> implements $ArticleCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String? title,
-      @DatetimeConverter() DateTime? createdAt,
-      @DatetimeConverter() DateTime? updatedAt});
+      String title,
+      @DatetimeConverter() DateTime createdAt,
+      @DatetimeConverter() DateTime updatedAt});
 }
 
 /// @nodoc
@@ -115,27 +115,27 @@ class __$$_ArticleCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? title = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
+    Object? title = null,
+    Object? createdAt = null,
+    Object? updatedAt = null,
   }) {
     return _then(_$_Article(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: freezed == title
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
-              as String?,
-      createdAt: freezed == createdAt
+              as String,
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
+              as DateTime,
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
     ));
   }
 }
@@ -145,9 +145,9 @@ class __$$_ArticleCopyWithImpl<$Res>
 class _$_Article implements _Article {
   const _$_Article(
       {required this.id,
-      this.title,
-      @DatetimeConverter() this.createdAt,
-      @DatetimeConverter() this.updatedAt});
+      required this.title,
+      @DatetimeConverter() required this.createdAt,
+      @DatetimeConverter() required this.updatedAt});
 
   factory _$_Article.fromJson(Map<String, dynamic> json) =>
       _$$_ArticleFromJson(json);
@@ -156,19 +156,19 @@ class _$_Article implements _Article {
   @override
   final String id;
 
-  /// 名前
+  /// タイトル
   @override
-  final String? title;
+  final String title;
 
   /// 作成日
   @override
   @DatetimeConverter()
-  final DateTime? createdAt;
+  final DateTime createdAt;
 
   /// 更新日
   @override
   @DatetimeConverter()
-  final DateTime? updatedAt;
+  final DateTime updatedAt;
 
   @override
   String toString() {
@@ -209,9 +209,9 @@ class _$_Article implements _Article {
 abstract class _Article implements Article {
   const factory _Article(
       {required final String id,
-      final String? title,
-      @DatetimeConverter() final DateTime? createdAt,
-      @DatetimeConverter() final DateTime? updatedAt}) = _$_Article;
+      required final String title,
+      @DatetimeConverter() required final DateTime createdAt,
+      @DatetimeConverter() required final DateTime updatedAt}) = _$_Article;
 
   factory _Article.fromJson(Map<String, dynamic> json) = _$_Article.fromJson;
 
@@ -221,18 +221,18 @@ abstract class _Article implements Article {
   String get id;
   @override
 
-  /// 名前
-  String? get title;
+  /// タイトル
+  String get title;
   @override
 
   /// 作成日
   @DatetimeConverter()
-  DateTime? get createdAt;
+  DateTime get createdAt;
   @override
 
   /// 更新日
   @DatetimeConverter()
-  DateTime? get updatedAt;
+  DateTime get updatedAt;
   @override
   @JsonKey(ignore: true)
   _$$_ArticleCopyWith<_$_Article> get copyWith =>

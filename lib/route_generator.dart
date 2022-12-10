@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_datatable/sample/datatable_2_sample.dart';
 import 'package:flutter_datatable/sample/datatable_sample.dart';
+import 'package:flutter_datatable/sample/web_data_table_sample.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRote(RouteSettings settings) {
@@ -11,6 +13,16 @@ class RouteGenerator {
       case DataTableSample.route:
         return MaterialPageRoute<dynamic>(
           builder: (_) => const DataTableSample(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case DataTable2Sample.route:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => const DataTable2Sample(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case WebDataTableSample.route:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => const WebDataTableSample(),
           settings: RouteSettings(name: settings.name),
         );
       default:

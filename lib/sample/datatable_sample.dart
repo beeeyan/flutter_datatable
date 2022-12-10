@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datatable/controller/article_controller.dart';
 import 'package:flutter_datatable/widget/drawer_menu.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 
 class DataTableSample extends ConsumerWidget {
   const DataTableSample({super.key});
@@ -30,10 +31,50 @@ class DataTableSample extends ConsumerWidget {
               left: 20,
               right: 20,
             ),
-            child: Center(
-              child: Text(
-                articleList.toString(),
-              ),
+            child: DataTable(
+              columns: const [
+                DataColumn(
+                  label: Text('id'),
+                ),
+                DataColumn(
+                  label: Text('タイトル'),
+                ),
+                DataColumn(
+                  label: Text('作成日'),
+                ),
+                DataColumn(
+                  label: Text('更新日'),
+                ),
+              ],
+              rows: articleList
+                  .map(
+                    (article) => DataRow(
+                      cells: <DataCell>[
+                        DataCell(
+                          Text(article.id),
+                        ),
+                        DataCell(
+                          Text(article.title),
+                        ),
+                        DataCell(
+                          Text(
+                            DateFormat.yMMMMd()
+                                .add_jms()
+                                .format(article.createdAt),
+                          ),
+                        ),
+                        DataCell(
+                          Text(
+                            DateFormat.yMMMMd()
+                                .add_jms()
+                                .format(article.updatedAt),
+                          ),
+
+                        ),
+                      ],
+                    ),
+                  )
+                  .toList(),
             ),
           );
         },

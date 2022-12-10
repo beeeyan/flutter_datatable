@@ -11,13 +11,13 @@ class Article with _$Article {
     required String id,
 
     /// タイトル
-    String? title,
+    required String title,
 
     /// 作成日
-    @DatetimeConverter() DateTime? createdAt,
+    @DatetimeConverter() required DateTime createdAt,
 
     /// 更新日
-    @DatetimeConverter() DateTime? updatedAt,
+    @DatetimeConverter() required DateTime updatedAt,
   }) = _Article;
 
   factory Article.fromJson(Map<String, dynamic> json) =>

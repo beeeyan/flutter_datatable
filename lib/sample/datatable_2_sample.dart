@@ -29,9 +29,9 @@ class DataTable2Sample extends ConsumerWidget {
         ),
         data: (articleList) {
           // StateNotifierProvider一つにまとめるのがいいかも
-          final dataTableState = ref.watch(dataTableStateProvider(articleList));
+          final dataTableState = ref.watch(dataTableStateProvider);
           final dataTableStateNotifier =
-              ref.watch(dataTableStateProvider(articleList).notifier);
+              ref.watch(dataTableStateProvider.notifier);
           // デザインはデフォルトで良しなにいい感じの表示をしてくれる。
           return Padding(
             padding: const EdgeInsets.only(

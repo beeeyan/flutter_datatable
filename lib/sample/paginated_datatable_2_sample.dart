@@ -79,7 +79,7 @@ class PaginatedDataTable2Sample extends ConsumerWidget {
                 ),
               ],
               // DataTableSource、引数は追加することができる。
-              source: SampleDataSource(dataTableState.articleList),
+              source: SampleDataSource(context, dataTableState.articleList),
             ),
           );
         },
@@ -90,8 +90,12 @@ class PaginatedDataTable2Sample extends ConsumerWidget {
 
 /// テーブルのデータ
 class SampleDataSource extends DataTableSource {
-  SampleDataSource(this.articleList);
+  SampleDataSource(this.context, this.articleList);
 
+  // contextを使う場合引数とする
+  // 例）
+  // テーブルに表示しているデータを元にダイアログや画面遷移する場合
+  final BuildContext context;
   final List<Article> articleList;
 
   @override
@@ -120,16 +124,15 @@ class SampleDataSource extends DataTableSource {
       // chekboxの活性非活性でのみ利用すべきなのかも。
       onSelectChanged: (value) {
         debugPrint(articleList[index].toString());
-        // context使えなかった。
-        // showDialog<void>(
-        //   context: context,
-        //   builder: (context) {
-        //     return AlertDialog(
-        //       title: const Text('選択した行のデータ'),
-        //       content: Text(articleList[index].toString()),
-        //     );
-        //   },
-        // );
+        showDialog<void>(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text('選択した行のデータ'),
+              content: Text(articleList[index].toString()),
+            );
+          },
+        );
       },
     );
   }
